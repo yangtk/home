@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://www.jq22.com/demo/fullpage-141201214949/index5.html -->
+<html lang="zh-CN" style="overflow: hidden; height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title>fullPage.js — 回调函数演示</title>
+
+<link rel="stylesheet" href="repair_folder/jquery.fullPage.css">
+
+<style>
+
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+
+.section2 p { position: relative; left: -120%;}
+
+.section3 p { position: relative; bottom: -120%;}
+
+.section4 p { display: none;}
+
+
+
+</style>
+
+<script src="repair_folder/jquery-1.8.3.min.js"></script>
+
+<script src="repair_folder/jquery-ui-1.10.3.min.js"></script>
+
+<script src="repair_folder/jquery.fullPage.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+	$.fn.fullpage({
+
+		slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90', '#ef820'],
+
+		anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+
+		afterLoad: function(anchorLink, index){
+
+			if(index == 2){
+
+				$('.section2').find('p').delay(500).animate({
+
+					left: '0'
+
+				}, 1500, 'easeOutExpo');
+
+			}
+
+			if(index == 3){
+
+				$('.section3').find('p').delay(500).animate({
+
+					bottom: '0'
+
+				}, 1500, 'easeOutExpo');
+
+			}
+
+			if(index == 4){
+
+				$('.section4').find('p').fadeIn(2000);
+
+			}
+
+		},
+
+		onLeave: function(index, direction){
+
+			if(index == '2'){
+
+				$('.section2').find('p').delay(500).animate({
+
+					left: '-120%'
+
+				}, 1500, 'easeOutExpo');
+
+			}
+
+			if(index == '3'){
+
+				$('.section3').find('p').delay(500).animate({
+
+					bottom: '-120%'
+
+				}, 1500, 'easeOutExpo');
+
+			}
+
+			if(index == '4'){
+
+				$('.section4').find('p').fadeOut(2000);
+
+			}
+
+		}
+
+	});
+
+});
+
+</script>
+
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+
+</style></head>
+
+
+
+<body style="overflow: hidden; height: 100%; font-size: 73.58%;"><div id="superContainer" style="top: 0px;">
+<style>
+/*tk*/
+.section1 {  background-color:#2eb366 !important; background:url(repair_folder/images/xd-bg.png) #2eb366 no-repeat; background-size:100%;}
+.logo-wrap {
+			margin:540px 40px 40px 0px; 
+			position:relative;
+			animation:logo_wrap 2s alternate;
+
+}
+@keyframes logo_wrap{
+            0% {top:-700px;}
+            100% {top:0px;}
+        }
+
+.ghostUpdown {
+			position:relative;
+			animation:ghostUpdown 1s infinite alternate;
+		    -webkit-animation:ghostUpdown 1s infinite alternate;
+		    width:91%;
+}
+@keyframes ghostUpdown{
+			/*from{margin-top:100px;}
+            to{margin-top:70px;}*/
+            from{top:10px;}
+            to{top:60px;}
+        }
+        @-webkit-keyframes ghostUpdown{
+            from{top:10px;}
+            to{top:60px;}
+        }
+
+.light-left {
+			position:absolute;left:-60px;top:-50px;z-index:2;
+			-webkit-transform-origin:0 0;
+			transform:rotateZ(0deg);
+			animation:light_left 2s infinite alternate;
+}
+@keyframes light_left{
+            0% {transform:rotateZ(-10deg);}
+            40% {transform:rotateZ(30deg);}
+            60% {transform:rotateZ(30deg);}
+            100% {transform:rotateZ(-10deg);}
+        }
+.light-right {
+			position:absolute;right:-60px;top:-50px;z-index:2;
+			-webkit-transform-origin:100% 0;
+			transform:rotateZ(10deg);
+			animation:light_right 2s infinite alternate;
+}
+@keyframes light_right{
+            0% {transform:rotateZ(-30deg);}
+            40% {transform:rotateZ(10deg);}
+            60% {transform:rotateZ(10deg);}
+            100% {transform:rotateZ(-30deg);}
+        }
+
+.shadow{
+            width: 66%;
+		    margin-left: 17%;
+		    height: 40px;
+		    border-radius: 50%;
+		    background: #1c7e45;
+		    box-shadow: 0 0 30px #11542d;
+		    opacity: 0.3;
+		    margin-top: 170px;
+		    animation: shadow 1s infinite alternate;
+		    -webkit-animation: shadow 1s infinite alternate;
+        }
+@keyframes shadow{
+            from{opacity:0.15;}
+            to{opacity:0.25;}
+        }
+        
+/*tk*/
+</style>
+<div class="section section1 active table" data-anchor="page1" style="height: 607px; background-color:#2eb366; ">
+	<div class="nimei" style="height:100%;">
+	
+	<img class="light-left" src="repair_folder/images/xd-light_left.png" alt="">
+	<img class="light-right" src="repair_folder/images/xd-light_right.png" alt="">
+	<p class="logo-wrap"><img src="repair_folder/images/xd-logo.png"></p>
+	<img class="ghostUpdown" src="repair_folder/images/xd-title.png" alt="">
+	<div class="shadow"></div>
+
+	</div>
+</div>
+
+<div class="section section2 table" data-anchor="page2" style="height: 607px; background-color: rgb(75, 191, 195);"><div class="tableCell" style="height: 607px;">
+
+	<h3>第二屏</h3>
+
+	<p>滚动到第二屏后的回调函数执行的效果</p>
+
+</div></div>
+
+<div class="section section3 table" data-anchor="page3" style="height: 607px; background-color: rgb(123, 170, 190);"><div class="tableCell" style="height: 607px;">
+
+	<h3>第三屏</h3>
+
+	<p>滚动到第三屏后的回调函数执行的效果</p>
+
+</div></div>
+
+<div class="section section4 table" data-anchor="page4" style="height: 607px; background-color: rgb(255, 153, 0);"><div class="tableCell" style="height: 607px;">
+
+	<h3>第四屏</h3>
+
+	<p>滚动到第四屏后的回调函数执行的效果</p>
+
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></body></html>
