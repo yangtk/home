@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{margin:0; padding:0;}
+	body { background:url(img03/1.png); background-size:cover;}
+  </style>
+  <script type="text/javascript" src="js/base.js"></script>
+  <script type="text/javascript">
+	$(function(){		
+		var arrUrl = [
+			'url(img03/1.png)',
+			'url(img03/2.png)',
+			'url(img03/3.png)',
+			'url(img03/4.png)'
+		];
+		var btn_begin = $('btn1');
+		var btn_stop = $('btn2');
+		var timer;
+		btn_begin.onclick = function(){
+			clearInterval(timer)
+			timer = setInterval(chooseBg,500);
+			i=1;
+			function chooseBg(){
+				document.body.style.backgroundImage = arrUrl[i];
+				i++;
+				//if(i===arrUrl.length){i=0;} 或者
+				i%=arrUrl.length;
+			}
+		}
+		btn_stop.onclick = function(){
+			clearInterval(timer);
+		}
+
+
+	})	
+	
+  </script>
+ </head>
+ <body>
+	<input id="btn1" type="button" value="换背景" />
+	<input id="btn2" type="button" value="停止" />
+
+ </body>
+</html>

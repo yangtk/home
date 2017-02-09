@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+  *{ margin:0; padding:0; }
+	ul {margin:30px; }
+	li { list-style:none; height:36px; line-height:30px; border-bottom:1px solid #ddd; }
+	li div { display:none; }
+	li div input { line-height:22px; font-size:16px; }
+	li img { cursor:pointer; margin-left:10px; }
+
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+
+		for(var i=0,len=aLi.length; i<len; i++){
+			fnList(aLi[i]);
+		}
+		function fnList(oLi){
+			var oImg = oLi.getElementsByTagName('img')[0];
+			var oP = oLi.getElementsByTagName('p')[0];		
+			var oDiv = oLi.getElementsByTagName('div')[0];
+			var oSpan = oLi.getElementsByTagName('span')[0];
+			var oInput = oLi.getElementsByTagName('input')[0];
+			var oBtn1 = oLi.getElementsByTagName('a')[0];
+			var oBtn2 = oLi.getElementsByTagName('a')[1];
+			
+			oImg.onclick = function(){
+				oP.style.display = 'none';
+				oDiv.style.display = 'block';
+			}
+			
+			oBtn1.onclick = function(){
+				oP.style.display = 'block';
+				oDiv.style.display = 'none';
+				oSpan.innerHTML = oInput.value;
+				oldValue = oSpan.innerHTML;
+			}
+			oBtn2.onclick = function(){
+				oP.style.display = 'block';
+				oDiv.style.display = 'none';
+				oInput.value = oldValue;
+			}
+
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<ul id="list">
+		<li>
+			<p><span>妙味实体课程</span><img src="img/pen.jpg" alt="" /></p>
+			<div><input type="text" value="妙味实体课程" />
+			<a href="#">保存</a>
+			<a href="#">取消</a>
+			</div>
+		</li>
+		<li>
+			<p><span>妙味实体课程</span><img src="img/pen.jpg" alt="" /></p>
+			<div><input type="text" value="妙味实体课程" />
+			<a href="#">保存</a>
+			<a href="#">取消</a>
+			</div>
+		</li>
+		<li>
+			<p><span>妙味实体课程</span><img src="img/pen.jpg" alt="" /></p>
+			<div><input type="text" value="妙味实体课程" />
+			<a href="#">保存</a>
+			<a href="#">取消</a>
+			</div>
+		</li>
+	</ul>
+ </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      
+
+        @keyframes nav1 { /* 这个名称是来自animation */
+            0%  { width:200px; height: 133px; opacity: .5}
+            100%  { width:300px; height:200px; opacity:1; }
+        }
+
+        .nav2 {
+            animation:nav1 .3s;
+            transform:translateX(-50%) translateY(-50%);
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+    <div class="nav2" id="div2" style="margin-top:300px; margin-left:800px;width:300px; height:200px; background:pink; -display:none;"></div>
+
+    
+</body>
+</html>

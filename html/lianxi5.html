@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+    body { background:black}
+  div { width:100px; height:100px; background:gray; position:absolute; bottom:30px; left:100px;  }
+  </style>
+ </head>
+ <script type="text/javascript">
+ window.onload = function(){  // 38 40 37 39    enter 13  command 91  93
+
+    var aInp = document.getElementsByTagName('input');
+    var oBox = document.getElementsByTagName('textarea')[0];
+
+    aInp[1].onclick = function(){
+      
+        var enterVal = aInp[0].value;
+
+        oBox.value += enterVal +'\n';
+        aInp[0].value = ''; 
+       
+    }
+
+    aInp[0].onkeydown = function(ev){
+
+        var oEvent = event || ev;
+        var enterVal = aInp[0].value;
+
+        if(oEvent.keyCode == 13 && oEvent.keyCode == 93){    // 不行了，只能用这个来触发两个按键oEvent.ctrlKey
+
+            oBox.value += enterVal +'\n';
+            aInp[0].value = '';
+        
+        }
+       
+    }
+  
+  
+
+
+ }
+  
+ </script>
+ <body>
+  <textarea name="" id="" cols="30" rows="10"></textarea><br>
+  <input type="text">
+  <input type="button" value="提交">
+ </body>
+</html>

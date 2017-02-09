@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+li{ list-style:none;}
+#input1{ width:100px; height:20px; border:1px #000000 solid; background:white;}
+#ul1{ width:200px; height:auto; border:1px #000000 solid; display:none; }
+#ul1 li{ width:100%; height:20px;}
+
+</style>
+<script>
+window.onload = function()
+{
+	var oInput = document.getElementById('input1');
+	var oUl = document.getElementById('ul1');
+	var aLi = oUl.getElementsByTagName('li');
+	var k = 0;
+	oInput.onclick = function (ev)
+	{
+		var ev = ev || window.event;
+		oUl.style.display = 'block';
+		list();
+		ev.cancelBubble = true;
+	}
+	function list()
+	{
+		for(var i=0; i<aLi.length; i++)
+		{
+			aLi[i].index = i;
+			if(k==0)
+			{
+				aLi[0].style.background = 'blue';
+			}
+			aLi[i].onmouseover = function (ev)
+			{
+				var ev = ev || window.event;
+				for(var i=0; i<aLi.length; i++)
+				{
+					aLi[i].style.background = '';
+				}
+				oInput.value = this.innerHTML;	
+				this.style.background = 'blue';
+				k = this.index;
+			}
+		}	
+	}
+	document.onkeydown = function (ev)
+	{
+		var ev = ev || window.event;
+		if(ev.keyCode == '40')
+		{
+			k++;
+			if(k>=aLi.length - 1)
+			{
+				k = aLi.length - 1;
+			}
+			for(var i=0; i<aLi.length; i++)
+			{
+				aLi[i].style.background = '';
+			}
+			oInput.value = aLi[k].innerHTML;	
+			aLi[k].style.background = 'blue';
+			return false;
+		}
+		else if(ev.keyCode == '38')
+		{
+			k--;
+			if(k<=0)
+			{
+				k = 0;
+			}
+			for(var i=0; i<aLi.length; i++)
+			{
+				aLi[i].style.background = '';
+			}
+			oInput.value = aLi[k].innerHTML;	
+			aLi[k].style.background = 'blue';
+			return false;
+		}
+		else if(ev.keyCode == '13')
+		{
+			oUl.style.display = 'none';	
+			return false;
+		}
+	}
+	document.onclick = function ()
+	{
+		oUl.style.display = 'none';	
+	}
+}
+
+</script>
+</head>
+
+<body>
+
+<input type="button" value="1111111" id="input1" />
+<ul id="ul1">
+	<li>1111111</li>
+    <li>2222222</li>
+    <li>3333333</li>
+    <li>44444</li>
+    <li>555555</li>
+    <li>66666666</li>
+    <li>77777777</li>
+    <li>888888</li>
+</ul>
+</body>
+</html>

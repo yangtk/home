@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    *{margin:0;padding:0;}
+    ul { display:none; position:absolute; }
+    ul li { width:120px; padding-left:20px; line-height:30px; height:30px; background:#eee; border:1px solid #ddd; color:black; list-style-type:none; }
+</style>
+<script>
+window.onload = function(){
+
+    document.oncontextmenu = function(ev){
+
+        var oEvent = event || ev;
+        var oUl = document.getElementById('ul1');
+
+        oUl.style.display = 'block';
+        oUl.style.top = oEvent.clientY + 'px';  // 缺scrollTop
+        oUl.style.left = oEvent.clientX + 'px';
+        
+        return false;
+    }
+
+    
+}
+</script>
+</head>
+<body>
+    <ul id="ul1">
+        <li>登录</li>
+        <li>回到首页</li>
+        <li>加入VIP</li>
+        <li>注销</li>
+    </ul>
+</body>
+</html>

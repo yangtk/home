@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{margin:0; padding:0;}
+	#wrap { width:400px; height:40px; border:1px solid #999; margin:auto; margin-top:200px; padding:0 10px; line-height:40px;  position:relative; top:0; cursor:pointer;  }
+	#wrap span { margin:0 10px; font-size:20px; position:relative; top:0; left:0; right:0; bottom:0; opacity:1; }
+	#bg { width:0; height:40px; position:absolute; left:0; top:0; background:#31F7EF; }
+  </style>
+  <script type="text/javascript" src="js/base.js"></script>  
+  <script type="text/javascript" src="js/doMove.js"></script>  
+  <script type="text/javascript">
+
+	function opacity(obj,dir,target,endFn){
+		dir = getStyle(obj,'opacity')>target?dir:-dir;
+		clearInterval(obj.opacity);
+		obj.opacity = setInterval(function(){
+			obj.style.opacity = getStyle(obj,'opacity') - 1 + (dir*0.02);
+			dir--;
+			if(dir==39){
+				clearInterval(obj.opacity);
+			}
+		},80)
+	}
+
+	$(function(){
+		var oBox = $('wrap');
+		for(var i=0; i<10; i++){
+			oBox.innerHTML += '<span>+1</span>'
+		}		
+		var aSpan = $tag('span');
+		var len = aSpan.length;
+		var num = 0;
+		var bg = $('bg');
+		oBox.onclick = function(){			
+			//opacity(bg,50,1);//这个opacity有问题，下次调整一下，，还有这个频率，速度控制好像有点问题,,,还有没做开关。
+			doMove(bg,'width',15,420,function(){
+				opacity(bg,50,0);
+			});
+			clearInterval(oBox.timer);
+			oBox.timer = setInterval(function(){
+				doMove(aSpan[num],'top',3,-100);
+				opacity(aSpan[num],50,0);
+				num++;  //再次点击的话，就是num这元素变化找不到元素了。
+				if(num==len){
+					clearInterval(oBox.timer);
+				}
+			},200)
+		}
+	})	
+	
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="bg"></div>
+	</div>
+ </body>
+</html>

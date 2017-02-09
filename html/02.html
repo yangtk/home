@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{ margin:0; padding:0; }
+	.clearfix:after{ visibility:hidden; display:block; font-size:0; content:''; clear:both; height:0; }
+	.fl { float:left; display:inline; }
+	ul li { float:left; width:24px; height:24px; background:url(img02/3.png)no-repeat; list-style-type:none; cursor:pointer; }
+	span { display:none; }
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){ 
+		var box = document.getElementById('box');
+		var aLi = box.getElementsByTagName('li');
+		var oSpan = box.getElementsByTagName('span')[0];
+		var oImg = box.getElementsByTagName('img')[0];
+		var a; //当前数值
+		var grade = ['很差','较差','还行','推荐','力荐'];
+		var onOff;
+		var lastImg;
+
+		for(var i=0,len=aLi.length; i<len; i++){
+			aLi[i].index = i;
+			aLi[i].onmouseover = assess;
+			aLi[i].onclick = function(){
+				assess();
+				hideCue();
+				oSpan.innerHTML = grade[this.index];
+				this.onOff = true;
+			};
+			
+			function assess(){
+				a=this.index;
+				if(a<2){					
+					for(var i=0; i<a+1; i++){
+						aLi[i].style.cssText = 'background:url(img02/2.png)no-repeat';
+					}
+				}
+				if(a>1){
+					for(var i=0; i<a+1; i++){
+						aLi[i].style.cssText = 'background:url(img02/1.png)no-repeat';
+					}
+				}
+				hideCue();
+				oSpan.innerHTML = grade[this.index];
+			}
+			aLi[i].onmouseout = function(){
+				
+				if(!this.onOff){
+					for(var i=0,len=aLi.length; i<len; i++){
+						aLi[i].style.cssText = lastImg;
+					}
+				}
+				if(!this.onOff){
+					showCue();
+				}
+				
+			}
+
+			function hideCue(){
+				oImg.style.display = 'none';
+				oSpan.style.display = 'block';
+			}
+			function showCue(){
+				oImg.style.display = 'block';
+				oSpan.style.display = 'none';
+			}
+
+		}
+		
+	} 
+  </script>
+ </head>
+ <body>
+	<div id="box">
+		<p class="fl">总体评价：</p>
+		<ul class="fl clearfix">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<span></span>
+		<img src="img02/4.png"/>
+	</div>
+ </body>
+</html>

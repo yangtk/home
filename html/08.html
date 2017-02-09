@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{margin:0; padding:0;}
+	img { width:100px; height:100px; position:absolute; top:130px; }
+	#img2 { left:300px; }
+  </style>
+  <script type="text/javascript" src="js/base.js"></script>
+  <script type="text/javascript" src="js/shake.js"></script>
+  <script type="text/javascript">
+	$(function(){		
+		
+		var aImg = document.getElementsByTagName('img');
+
+		for(var i=0,len=8; i<8; i++){
+			document.body.innerHTML += '<img src="img08/'+(i+1)+'.jpg">';			
+		}
+		for(var i=0,len=8; i<8; i++){
+			aImg[i].style.left = 100 + i*110 + 'px';
+			aImg[i].onmouseover = function(){
+				shake(this,'top')
+			}
+		}
+
+
+	})	
+	
+  </script>
+ </head>
+ <body>
+	
+ </body>
+</html>

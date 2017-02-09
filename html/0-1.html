@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>substring展开收缩</title>
+  <style type="text/css">
+	p { width:400px; margin:30px auto; padding:10px; border:10px solid #ff9600; background:#eee; }
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oP = document.getElementsByTagName('p')[0];
+		var oa = document.getElementsByTagName('a')[0];
+		var oSpan = document.getElementsByTagName('span')[0];
+		var str = oSpan.innerHTML;
+		var onOff = true;
+
+		oa.onclick = function(){
+			
+			if(onOff){
+				oSpan.innerHTML = str.substring(0,18);
+				oa.innerHTML = '>>展开';
+				onOff = false;
+			}else{
+				oSpan.innerHTML = str;
+				oa.innerHTML = '<<收缩';
+				onOff = true;
+			}
+		}
+
+		
+	}
+  
+  </script>
+ </head>
+ <body>
+  <p><span>妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！<br />2013年底，妙味课堂最新推出“远程培训”服务，受到很多朋友们的喜爱与追捧，我们必将更加努力的帮助远程学习的朋友实现技术提升</span><a href="javascript:;"><<收缩</a></p>
+ </body>
+</html>
+

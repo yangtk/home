@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css"> 
+	div { width:50px; height:50px; background:orange; color:white; position:absolute; line-height:50px; text-align:center; }
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){	
+		var aDiv = document.getElementsByTagName('div');
+		var str = '';
+		for(var i=0; i<100; i++){			
+			str += '<div>' + i + '</div>';	
+		}	
+		document.body.innerHTML = str;
+		for(var i=0,len=aDiv.length; i<len; i++){
+			aDiv[i].style.left = 10 + i%10*60 + 'px';
+			aDiv[i].style.top =10 + (i - i%10)/10*60 + 'px';
+
+			if(i%4 ==1){
+				aDiv[i].style.background = 'yellow';
+			}else if(i%4 ==2){
+				aDiv[i].style.background = 'blue';
+			}else if(i%4 ==3){
+				aDiv[i].style.background = 'green';
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+
+		
+	
+ </body>
+</html>

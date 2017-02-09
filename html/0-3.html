@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>替换</title>
+  <style type="text/css">
+  *{margin:0; padding:0;}
+	li { list-style:none; }
+	span { background:orange; }
+
+	.wrap { position:relative; width:800px;  margin:100px auto; text-align:center; font-size:20px; }
+	.left { float:left; width:320px; height:300px; background:#ccc; }
+	.left { width:320px; height:300px; font-size:20px; font-family:'微软雅黑'; }
+	.right { float:right; width:320px; height:300px; background:pink; text-align:left;  }
+	.center { display:inline-block; width:140px; height:300px; }
+	.center p { padding:20px 0; }
+	.center ul { margin-left:16px; opacity:0; }
+	.center li { float:left; margin-right:4px; width:10px; height:16px; background:yellow; }
+	.center li.on { background:red; }
+	
+  </style>
+ </head>
+ <body>
+	 <div class="wrap">
+		 
+		 <textarea name="" class="left" id="left" cols="30" rows="10"></textarea>
+		
+		 <div class="right" id="right"></div>
+
+		 <div class="center" id="center">
+			<button>翻滚吧，文字</button>
+			<p>0/0</p>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		 </div>
+	 </div>
+  
+ </body>
+</html>
+<script type="text/javascript" src="js/miaov.js"></script>
+<script type="text/javascript">
+
+	var oBtn = document.getElementsByTagName('button')[0];
+
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var center = document.getElementById('center');
+	var oUl = document.getElementsByTagName('ul')[0];
+
+	var numP = center.getElementsByTagName('p')[0];
+	var aLi = center.getElementsByTagName('li');
+
+	oBtn.onclick = function(){
+
+		var result_L = left.value;
+		var num = 1;
+
+		if(result_L=='')return;
+
+		if( oBtn.timerd )return;
+		oBtn.timerd = true;
+		
+		
+		
+		opacity(oUl,10,100);
+
+		clearInterval( oBtn.timer );
+		oBtn.timer = setInterval(function(){
+	
+			left.value = result_L.substring(0,result_L.length-1-num);
+			num++;			
+						
+
+			if( result_L.length == num ){
+
+				clearInterval( oBtn.timer );
+				
+				opacity(oUl,10,0);
+
+				oBtn.timerd = false;
+
+			}
+
+
+			right.innerHTML = result_L.substring(0,num)
+			
+			numP.innerHTML = num + '/' + result_L.length;
+
+			for(var i=0,len=aLi.length; i<len; i++){
+				aLi[i].className = '';
+			}
+			aLi[num%aLi.length].className = 'on';
+
+		},30)
+
+		
+
+		
+
+
+
+	}
+
+	
+
+
+
+
+
+
+</script>

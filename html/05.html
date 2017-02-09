@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{ list-style:none; }
+  .tab_wrap { width:800px; margin:auto; position:relative;}
+  #tabLi { padding-left:0; }
+  #tabLi li { float:left; padding:10px 30px; background:#333;
+  color:white; cursor:pointer; border-right:1px solid #555;   }
+   #sonUl ul { overflow:hidden; -border:1px red solid; position:absolute; width:400px;top:40px; left:0;padding-left:0; display:none; }
+   
+   #sonUl ul li { float:left; padding:10px 30px; background:#333;
+  color:white; cursor:pointer; border-right:1px solid #555; }
+   #sonUl ul.u1 { margin-left:10px;}
+   #sonUl ul.u2 { margin-left:50px;}
+   #sonUl ul.u3 { margin-left:100px;}
+   #sonUl ul.u4 { margin-left:150px;}
+  </style>
+  <script type="text/javascript" src="js/base.js"></script>
+  <script type="text/javascript">
+	$(function(){
+		var parent_oUl = $('tabLi');
+		var parent_aLi = parent_oUl.getElementsByTagName('li');
+		var son_oUl = $('sonUl');
+		var son_aUl = son_oUl.getElementsByTagName('ul'); //弹出的四个ul
+		var son_aLi = son_oUl.getElementsByTagName('li'); //弹出的所有li
+		var timer = null;
+		
+		for(var i=0,len=parent_aLi.length; i<len; i++){
+			parent_aLi[i].index = i;
+			parent_aLi[i].onmouseover = show;
+			parent_aLi[i].onmouseout = hide;
+
+			son_aUl[i].onmouseover = cut;
+			son_aUl[i].onmouseout = hideself;
+		}
+
+		function show(){
+			for(var i=0,len=son_aUl.length; i<len; i++){
+				son_aUl[i].style.display = 'none';
+			}
+			son_aUl[this.index].style.display = 'block';
+		}
+
+		function hide(){
+			var thisnum = this.index;
+			timer = setTimeout(function(){
+				son_aUl[thisnum].style.display = 'none';			
+			},500)
+		}
+		
+		function cut(){
+			clearTimeout(timer);
+		}
+
+		function hideself(){
+			var thisnum = this;
+			timer = setTimeout(function(){
+				thisnum.style.display = 'none';			
+			},500)
+		}
+	
+
+		
+	})	
+	
+  </script>
+ </head>
+ <body>
+	<div class="tab_wrap">
+		<ul id="tabLi">
+			<li>首页</li>
+			<li>关于我们</li>
+			<li>博客</li>
+			<li>联系</li>
+		</ul>
+		<div id="sonUl">
+			<ul class="u1">
+				<li>111</li>
+				<li>222</li>
+				<li>333</li>
+				<li>444</li>
+			</ul>
+			<ul class="u2" >
+				<li>555</li>
+				<li>666</li>
+				<li>777</li>
+				<li>888</li>
+			</ul>
+			<ul class="u3">
+				<li>aaa</li>
+				<li>bbb</li>
+				<li>ccc</li>
+				<li>ddd</li>
+			</ul>
+			<ul class="u4">
+				<li>eee</li>
+				<li>fff</li>
+				<li>ggg</li>
+				<li>hhh</li>
+			</ul>
+		</div>
+		
+	</div>
+ </body>
+</html>

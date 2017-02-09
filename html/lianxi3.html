@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <script type="text/javascript">
+ window.onload = function(){
+
+	
+	document.onmousemove = function(ev){  //http://398868310.iteye.com/blog/2147245  和这个不一样啊
+
+		var oDiv = document.getElementById('div1');
+		var oEvent = ev || event;
+		var mouseLeft = oEvent.clientX;
+		var mouseTop = oEvent.clientY;
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft;
+
+
+
+		oDiv.style.left = mouseLeft + scrollLeft + 'px';
+		oDiv.style.top = mouseTop + scrollTop + 'px';
+	}
+
+	
+	
+	
+	//bug:clientX是可视区的，当有滚动条时候，物体的top由可视区的top+滚动条的top。
+
+	//还是会飘，会跳动滴，这个说在bom里面解决的更好。
+
+ }
+	
+ </script>
+ <body style="height:2000px;">
+
+	<div id="div1" style="width:100px; height:100px; background:gray; position:absolute;left:0;top:0;"></div>
+  
+ </body>
+</html>

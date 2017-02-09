@@ -1,14 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>yantk练习列表</title>
-    <style>
-        body { width:400px; margin:0 auto; }
-        h1 { text-align:center; padding-bottom:20px; border-bottom:1px solid black; }
-    </style>
-</head>
-<body>
-    <h1>我是练习一</h1>
-</body>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery-1.12.1.min.js"></script>
+  <style>
+  	.tip-layer {
+    z-index: 99999999;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    display:none;
+}
+.tip-pop {
+    padding: 12px 8px 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.tip-status {
+    color: #22ac38;
+    background-color: white;
+    border-color: #ddd;
+    box-shadow: 0 3px 15px #d1d5d9;
+}
+.icon-status-tip {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    background:url(icon-status-tip.png) no-repeat;
+    background-size:100%;
+}
+.tip-txt {
+    color:black;
+}
+.tip-close {
+	display:inline-block;
+    width:28px;
+    height:28px;
+    background:url(close-icon1.png) no-repeat;
+    background-size:14px;
+    background-position:center;
+    cursor:pointer;
+    opacity: .7
+}
+.tip-close:hover {
+	opacity: 1;
+}
+.dis-i-b {
+	display:inline-block;
+}
+.ver-m {
+	vertical-align: middle;
+}
+  </style>
+ </head>
+ 
+ <body>
+	<!--新的 全局提示框-->
+    <div class="tip-layer">
+        <div class="tip-pop tip-status">
+            <i class="icon-status-tip ver-m mr5"></i>
+            <span class="tip-txt ver-m">测试提示框</span>
+            <i class="tip-close ver-m"></i>           
+        </div>
+    </div>
+    <script>
+        
+        function StatusTipFn(txt,status){
+            this.icon = $('.icon-status-tip');
+            this.box = $('.tip-layer');
+            this.txt = $('.tip-txt');
+            this.close = $('.tip-close');
+        }var timer = '';
+        StatusTipFn.prototype.tip = function(){
+
+            this.box.addClass('dis-i-b');
+            
+            var box = this.box;
+            this.close.click(function(){
+                box.removeClass('dis-i-b');
+            });
+            
+            clearTimeout(timer);
+            timer = setTimeout(function(){                
+                box.removeClass('dis-i-b');
+            },3000);
+        }
+    </script>
+
+    <button onclick="alertTip()">提示</button>
+    <script>
+    function alertTip(){
+        new StatusTipFn('测试提示框','success').tip();
+    }
+    </script>
+ </body>
 </html>

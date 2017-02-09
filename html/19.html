@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	li { list-style:none; margin-left:30px; }
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oUl = document.getElementById('list');
+		var aLi = document.getElementsByTagName('li');
+
+		for(var i=0,len=aLi.length; i<len; i++){
+			fn1(aLi[i]);
+		}
+
+		function fn1(oLi){
+			var aInput = oLi.getElementsByTagName('input');
+			var oStrong = oLi.getElementsByTagName('strong')[0];
+			var oEm = oLi.getElementsByTagName('em')[0];
+			var oSpan = oLi.getElementsByTagName('span')[0];
+			var n1 = Number(oStrong.innerHTML);
+			var n2 = parseFloat(oEm.innerHTML);
+
+			
+
+			aInput[0].onclick = function(){
+				n1--;
+				if(n1<0){n1=0;}
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n2*n1 + '元';
+				
+				fn2();
+			}
+
+			aInput[1].onclick = function(){
+				n1++;
+				oStrong.innerHTML = n1;
+				oSpan.innerHTML = n2*n1 + '元';
+				
+				fn2();
+			}
+		}
+
+		function fn2(){
+			var all = document.getElementById('all');
+			var allM = document.getElementById('allM');
+			var best = document.getElementById('best');
+			
+			var aStrong = oUl.getElementsByTagName('strong')
+			var aSpan = oUl.getElementsByTagName('span')
+			var aEm = oUl.getElementsByTagName('em')
+			var zs = 0;
+			var ghf = 0;
+			var arr = [];
+			
+			for(var i=0,len=aLi.length; i<len; i++){
+				zs += Number(aStrong[i].innerHTML);
+				ghf += parseFloat(aSpan[i].innerHTML);
+				
+				all.innerHTML = zs;
+				allM.innerHTML = ghf;
+
+				if(aStrong[i].innerHTML > 0){
+					arr.push(parseFloat(aEm[i].innerHTML));
+				}
+				
+			}
+			var max = arr[0];
+			for(var i=0,len=arr.length; i<len; i++){
+				if(max < arr[i]){
+					max = arr[i];
+				}
+			}
+			
+			best.innerHTML = max;
+			
+		}
+
+		
+
+	}
+  </script>
+ </head>
+ <body>
+	<ul id="list">
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>12.5元</em>
+			总计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>10</em>
+			总计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>8元</em>
+			总计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="-" />
+			<strong>0</strong>
+			<input type="button" value="+" />
+			单价：<em>14.5元</em>
+			总计：<span>0元</span>
+		</li>
+	</ul>
+	<p>商品合计共：<span id="all">0</span>件<br>
+		共花费了：<em id="allM">0</em>元<br>
+		其中最贵的商品单价是：<i id="best">0</i>元
+	</p>
+ </body>
+</html>

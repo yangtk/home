@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        #div1
+        {
+            width: 100px;
+            height: 100px;
+            background: #0000FF;
+            position: absolute;
+            left: 800px;
+            top: 100px;
+        }
+        #div200
+        {
+            width: 1px;
+            height: 400px;
+            background: #FF0000;
+            position: absolute;
+            left: 200px;
+        }
+        #div500
+        {
+            width: 1px;
+            height: 400px;
+            background: #FF0000;
+            position: absolute;
+            left: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function move(end) {
+            var oDiv = document.getElementById('div1');
+            var timer = null;
+            timer = setInterval(function () {
+                var speed = (end - oDiv.offsetLeft) / 5;        //根据终点和offsetLeft取出运动的速度
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);       //进位取整，小数位变为整位，
+                //                if (oDiv.offsetLeft <= end) {
+                //                    clearInterval(timer);
+                //                }
+                //                else {
+                //                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                //                }
+                if (Math.abs(end - oDiv.offsetLeft) <= speed) { //由于在停止的时候最后会出现小的缝隙，或者说没有完全的到达指定地点，所以要小于它的速度
+                    clearInterval(timer);                       //当距离小于速度时，让计时器停止
+                    oDiv.style.left = end + 'px';           //在停止后填充缝隙。
+                }
+                else {
+                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';       //移动DIV
+                }
+            }, 30)
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn1" value="到500的位置" onclick="move(500);" />
+    <input type="button" id="btn2" value="到200的位置" onclick="move(200);" />
+    <div id="div1">
+    </div>
+    <div id="div200">200
+    </div>
+    <div id="div500">500
+    </div>
+</body>
+</html>

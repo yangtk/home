@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css"> 
+	.all { width:400px; height:600px; background:url(img2/phone.jpg) no-repeat; position:relative; }
+	.inputbox { width:237px; height:49px; border-top:1px solid #aaa; background:#f1f1f1; position:absolute; top:457px; left:28px; }
+	.inputbox img { position:relative; top:8px; left:5px; margin-right:5px; }
+	.text { width:221px; padding:8px; position:absolute; top:80px; left:28px; }
+	.text .left span { padding:3px 5px; background:#999; color:#333; }
+	.text .right span { padding:3px 5px; background:green; color:white; }
+	.text .right img { float:right; }
+  </style>
+  <script type="text/javascript">
+  window.onload = function(){
+	var oBox = document.getElementById('box');
+	var aImg = oBox.getElementsByTagName('img');
+	var oBtn = document.getElementById('btn1');
+	var oInput = document.getElementById('input1');
+	var oContent = document.getElementById('content');
+	var d = 0;
+	for(var i=0; i<aImg.length; i++){
+		
+		aImg[i].onclick = function(){
+			d++;
+			for(var b=0; b<aImg.length; b++){
+				aImg[b].style.display  = 'none';
+			}
+			if(d>=aImg.length){
+				d=0;
+			}
+			aImg[d].style.display = 'inline-block';
+		}
+	}
+	oBtn.onclick = function(){
+		var val = oInput.value
+		if(val ==''){
+			alert('不能为空');
+			return false;
+		}
+		if(d===0){
+			oContent.innerHTML += '<p class="left"><img src="img2/1.jpg"/><span>' + val + '</span></p>';
+		}else {
+			oContent.innerHTML += '<p class="right"><img src="img2/2.jpg"/><span>' + val + '</span></p>';
+		}
+		oInput.value = '';
+	}
+
+   }
+  </script>
+ </head>
+ <body>
+	<div class="all">
+		<div class="text">
+			<div id="content"></div>
+			<!--<p class="left" id="left">
+				<img id="img2" src=""/>
+				<span id="txt"></span>
+			</p>
+			<!--<p class="right" id="right">
+				<img src="img2/2.jpg"/>
+				<span>送到南方宋代哥jo三等奖哦高房价sad个偶家岁的高送加大</span>
+			</p>	-->		
+		</div>
+		<div class="inputbox" id="box">			
+			<img src="img2/1.jpg" alt="" />			
+			<img src="img2/2.jpg" alt="" style="display:none;" />
+			
+			<input id="input1" type="text" style="width:147px;height:20px;"/>
+			<span id="btn1" class="fs">发送</span>
+		</div>
+	</div>
+ </body>
+</html>

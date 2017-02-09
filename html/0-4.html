@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>图片滚动</title>
+  <style type="text/css">
+	*{ word-wrap:break-word;}
+	a{ color:red;}
+	ul,li {
+		list-style-type:none; 
+		margin:0;
+		padding:0;
+	}
+	.img-wrap {
+		width:500px;
+		margin:100px auto;
+	}
+	.img-wrap ul:after {
+		content:'';
+		height:0;
+		display:block;
+		clear:both;
+		visibility:hidden;
+	}
+	.img-wrap ul li{
+		float:left;
+		width:200px;
+		height:100px;
+		overflow:hidden;
+		margin:5px;
+
+	}
+	.img-wrap ul img {
+		vertical-align:top;
+	}
+
+	.img-wrap ul li div {
+		position:relative;
+		top:0px;
+	}
+  </style>
+<script type="text/javascript" src="js/miaov.js"></script>
+  
+  <script type="text/javascript">
+  window.onload = function(){
+	var oUl = document.getElementById('imgUl');
+	var aDiv = oUl.getElementsByTagName('div');
+
+/*
+	var num = 0;
+	timer = setInterval(function(){
+	
+		alert( num );
+		num++;
+
+		if(num == 10){
+			clearInterval( timer );
+		}
+	},30)
+*/
+	
+/*	doMove( oUl, 'padding-top', 3, 30 );  */
+
+/*	aDiv[0].style.top = '-50px';   */
+
+
+	var flag = 0;
+
+	for(var i=0; i<aDiv.length; i++){
+		imgchange_randomtime( aDiv[i] );
+	}
+
+	function imgchange_randomtime(div){
+		var timer;
+		clearInterval( timer );
+		timer = setInterval(function(){	
+
+			flag = flag==0? -100 : 0;
+			doMove( div, 'top', 10, flag, imgchange_randomtime );
+
+		}, Math.round( Math.random()*2000 + 1000 ));
+
+	}
+
+	imgchange_randomtime();
+
+
+
+	
+  
+  
+  }
+  </script>
+ </head>
+ <body>
+ <p style="height:20px;"></p>
+	<div class="img-wrap" id="img-wrap">
+		<ul id="imgUl">
+			<li><div>
+				<img src="img0-4/1.jpg" width="200" height="100" alt="" />
+				<img src="img0-4/2.jpg" width="200" height="100" alt="" /></div>
+			</li>
+			<li><div>
+				<img src="img0-4/3.jpg" width="200" height="100" alt="" />
+				<img src="img0-4/4.jpg" width="200" height="100" alt="" /></div>
+			</li>
+			<li><div>
+				<img src="img0-4/5.jpg" width="200" height="100" alt="" />
+				<img src="img0-4/6.jpg" width="200" height="100" alt="" /></div>
+			</li>
+			<li><div>
+				<img src="img0-4/7.jpg" width="200" height="100" alt="" />
+				<img src="img0-4/8.jpg" width="200" height="100" alt="" /></div>
+			</li>
+			
+		</ul>
+	</div>
+
+
+
+ </body>
+</html>

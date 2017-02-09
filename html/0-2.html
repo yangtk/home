@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>替换</title>
+  <style type="text/css">
+	li { list-style:none; }
+	span { background:orange; }
+	p.text1 { width:360px; padding:20px; margin:100px auto 10px auto; border:10px solid #eee; }
+	.wrap { position:relative; width:400px;  margin:100px auto; }
+	.wrap .right { position:absolute;  right:-120px; top:-16px; }
+	.right li { display:none; width:100px; height:50px; background:#999; color:#333; list-style-type:none; text-align:center; line-height:50px; }
+	.right li:hover { background:orange; color:white; }
+	.right li:first-child:hover { background:#777; }
+	.down { border:10px solid #ddd; background:#eee; display:none; position:relative; }
+	.down div { border-bottom:1px solid #555; }
+	.down button { width:100px; height:40px; }
+	.down button.on { background:yellow; }
+	.down li { display:none; }
+	.down p { position:absolute; padding:20px; right:-10px; top:-30px;}
+	.w100 { width:100px; }
+  </style>
+ </head>
+ <body>
+	 <div class="wrap">
+		<div class="right" id="right">
+			<ul>
+				<li style="display:block;">展开</li>
+				<li>查找</li>
+				<li>替换</li>
+			</ul>
+		</div>
+		<p class="text1" id="text1">妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！2013年底，妙味课堂最新推出"远程培训"服务，受到很多朋友们的喜爱与追捧，我们必将更加努力的帮助远程学习的朋友实现技术提升……</p>
+		<div class="down" id="down">
+			<div>
+				<button>查找</button>
+				<button>替换</button>
+			</div>
+			<ul>
+				<li id="tofind"><input type="" class="w100" /><input type="button" value="查找" /></li>
+				<li id="tochange"><input type="" class="w100" /><input type="" class="w100" /><input type="button" value="替换" /></li>
+			</ul>
+			<p id="close">X</p>
+		</div>
+	 </div>
+  
+ </body>
+</html>
+<script type="text/javascript">
+	var oLi_btn = document.getElementById('right');
+	var aLi_btn = oLi_btn.getElementsByTagName('li');
+
+	var aLi_twoBtn = []; aLi_twoBtn.push(aLi_btn[1],aLi_btn[2]);
+
+	var aButton = document.getElementsByTagName('button');
+
+	var oLi_con = document.getElementById('down');
+	var aLi_con = oLi_con.getElementsByTagName('li');
+
+	var close = document.getElementById('close');
+
+	var onOff = true;
+	
+	aLi_btn[0].onclick = function(){
+		if(onOff){
+			aLi_btn[0].innerHTML = '收缩';
+			aLi_btn[1].style.display = 'block';
+			aLi_btn[2].style.display = 'block';
+			onOff = false;
+		}else{
+			aLi_btn[0].innerHTML = '展开';
+			aLi_btn[1].style.display = 'none';
+			aLi_btn[2].style.display = 'none';
+			onOff = true;
+		}
+	}
+	
+
+	for(var i=0,len=aLi_twoBtn.length; i<len; i++){
+		aLi_twoBtn[i].index = i; 
+		aButton[i].index = i; 
+		aButton[i].onclick = searchTabFn;
+		aLi_twoBtn[i].onclick = searchTabFn;
+	}
+
+	function searchTabFn(){
+		oLi_con.style.display = 'block';
+		for(var i=0,len=aLi_twoBtn.length; i<len; i++){
+			aLi_con[i].style.display = 'none';
+			aButton[i].style.cssText = '';
+		}
+		aLi_con[this.index].style.display = 'block';
+
+		aButton[this.index].style.cssText = 'background:yellow; ';
+
+	}
+
+	close.onclick = function(){
+		oLi_con.style.display = 'none';
+	}
+
+	//查找
+	var oInp_find = document.getElementById('tofind');
+	var oInp_change = document.getElementById('tochange');
+
+	var aInp_find = oInp_find.getElementsByTagName('input');
+	var aInp_change = oInp_change.getElementsByTagName('input');
+
+	var text1 = document.getElementById('text1');
+	
+	
+
+	aInp_find[1].onclick = function(){
+		var str = text1.innerHTML;
+		var result_find = aInp_find[0].value;
+		
+		if( result_find == '' ){
+			alert( '您未输入任何内容' );return;
+		}else if( str.indexOf( result_find ) == -1 ){
+			alert( '您输入的"' + result_find + '"未找到' );return;
+		};
+		text1.innerHTML = str.split( result_find ).join( '<span>' + result_find + '</span>' );
+	}
+
+	// 替换
+	aInp_change[2].onclick = function(){
+		var str = text1.innerHTML;
+		var result_change = aInp_change[0].value;
+		var result_change2 = aInp_change[1].value;
+		
+		if( result_change == '' && result_change2 == '' ){
+			alert( '您未输入任何内容' );return;
+		}else if( result_change == '' && result_change2 != '' ){
+			alert('请输入被替换的内容啊sb');return;
+		}else if( str.indexOf( result_change ) == -1 ){
+			alert( result_change + '《内容没找到，请问咋替换啊大佬');return;
+		}else if( result_change != '' && result_change2 == '' ){
+			soga = confirm('干，你确定要删除>' + result_change );
+			if(soga == true){
+				text1.innerHTML = str.split( result_change ).join( result_change2 );
+			}else{
+				return;
+			}
+		}
+
+		text1.innerHTML = str.split( result_change ).join( result_change2 );
+
+
+	}
+
+
+
+
+
+
+</script>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <style type="text/css" >
+            .dialog
+            {
+                position:fixed;
+                width:300px;
+                height:300px;
+                z-index:30; 
+                top:50%; left:50%;
+    
+                margin-top:-200px; margin-left:-200px;
+    
+                box-shadow:2px 2px 4px #ccc;
+    
+                background-color:#f1f1f1;
+    
+                display:none;
+
+  
+            }
+    
+            
+            .dialog .title
+
+    
+           {
+    
+                font-size:16px;
+    
+                font-weight:bold;
+    
+                color:#fff;
+    
+                padding:4px;
+    
+                background-color:#404040;
+
+  
+            }
+    
+            
+            .dialog .close
+
+    
+           {
+    
+                width:20px;
+    
+                height:20px;
+    
+                margin:3px;
+    
+                float:right;
+    
+                cursor:pointer;
+
+  
+            }
+
+  
+        </style>
+
+  
+    </head>
+
+  
+    <body>
+
+  
+    
+    <input type="button" value="Dialog Test" onclick="openDialog();"/>
+
+  
+    
+    <div id="dlgTest" class="dialog">
+
+  
+        <img class="close" alt="" src="images/close.png">
+
+  
+        <div class="title">Dialog</div>
+
+  
+        <div class="content">
+
+  
+        
+        </div>
+
+  
+    </div>
+
+  
+    
+    <script type="text/javascript">
+
+  
+        function Dialog(id){
+    
+           this.id=id;
+    
+           var that=this;
+    
+            document.getElementById(id).children[0].onclick=function(){
+    
+                that.close();
+
+    
+            }
+
+    
+        }
+
+    
+        
+        Dialog.prototype.show=function(){
+    
+           var dlg=document.getElementById(this.id);
+    
+            dlg.style.display='block';
+    
+            dlg=null;
+    
+        }
+
+    
+        
+        Dialog.prototype.close=function(){
+    
+           var dlg=document.getElementById(this.id);
+    
+            dlg.style.display='none';
+    
+            dlg=null;
+    
+        }
+
+    
+   </script>
+
+  
+    
+    <script type="text/javascript">
+
+  
+        function openDialog(){
+    
+           var dlg=new Dialog('dlgTest');
+    
+            dlg.show();
+
+    
+        }
+
+    
+   </script>
+
+  
+    </body>
+
+  
+<html>

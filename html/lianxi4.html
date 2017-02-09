@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <style>
+   div {
+    width:3px;
+    height:3px;
+    background:red;
+    position:absolute;
+    left:0;
+    top:0;
+   }
+ </style>
+ <script type="text/javascript">
+	window.onload = function(){	
+            
+        var aDiv = document.getElementsByTagName('div');
+
+        document.onmousemove = function(ev){
+
+            var oEvent = event || ev;
+            var mouseLeft = oEvent.clientX;
+            var mouseRight  = oEvent.clientY;
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft;
+
+            for(var i=aDiv.length-1; i>0; i--){
+                aDiv[i].style.top = aDiv[i-1].style.top;
+                aDiv[i].style.left = aDiv[i-1].style.left;
+            }
+
+            aDiv[0].style.top = mouseRight + scrollTop + 'px';
+            aDiv[0].style.left = mouseLeft + scrollLeft + 'px';
+        }
+          
+           
+
+	}
+ </script>
+ <body style="height:2000px;">
+    <div></div>
+    <div style="background:blue;"></div>
+    <div style="background:yellow;"></div>
+    <div style="background:black;"></div>
+    <div style="background:green;"></div>
+    <div style="background:pink;"></div>
+    <div style="background:orange;"></div>
+    <div style="background:red;"></div>
+    <div style="background:blue;"></div>
+    <div style="background:yellow;"></div>
+    <div style="background:black;"></div>
+    <div style="background:green;"></div>
+    <div style="background:pink;"></div>
+    <div style="background:orange;"></div>
+    <div style="background:red;"></div>
+    <div style="background:blue;"></div>
+    <div style="background:yellow;"></div>
+    <div style="background:black;"></div>
+    <div style="background:green;"></div>
+    <div style="background:pink;"></div>
+    <div style="background:orange;"></div>
+    <div style="background:red;"></div>
+    
+ </body>
+</html>

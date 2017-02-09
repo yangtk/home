@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+  *{ margin:0; padding:0; }
+  #list>div { position:relative; width:500px; height:300px; display:none; }
+  #list>div ul { position:absolute; width:100%; bottom:3px; display:table; }
+  #list>div ul li { display:table-cell; text-align:center; background:rgba(255,255,255,.5);line-height:36px; border-right:1px solid #aaa;
+  cursor:pointer; }
+  #list>div ul li.on { background-color:red; }
+	#list div img { width:500px; height:300px; }
+	li { list-style:none; }
+	#list>div.hide { display:none; }
+	#list>div.show { display:table; }
+	.btn { width:80px; height:300px; float:left}
+	.btn input { background:#eee; width:80px; height:75px; border:none; line-height:74px; border-bottom:1px solid #aaa; cursor:pointer; }
+	.btn input.on { background:white; }
+	#list { width:500px; height:300px; float:left;  }
+
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oBtn = document.getElementById('btns'),
+			aBtn = oBtn.getElementsByTagName('input'),
+			oDivBox = document.getElementById('list'),
+			aDiv = oDivBox.getElementsByTagName('div'),
+			arrImg = [
+				['img/1.png','img/2.png','img/3.png'],
+				['img/2.png','img/3.png'],
+				['img/3.png','img/1.png','img/2.png','img/4.png'],
+				['img/4.png','img/3.png','img/2.png','img/1.png','img/4.png']
+			],
+			num =0;
+			
+
+		for(var i=0,len=aBtn.length; i<len; i++){
+			aBtn[i].index = i;
+			aBtn[i].onclick = function(){
+				num = this.index;				
+				for(var i=0,len=aBtn.length; i<len; i++){
+					aBtn[i].className = '';
+					aDiv[i].className = '';
+				}
+				this.className = 'on';
+				aDiv[this.index].className = 'show';
+			}
+			
+
+			fnSmallTab(aDiv[i]);
+
+			function fnSmallTab(oDiv){
+				var oImg = oDiv.getElementsByTagName('img')[0],
+					aLi = oDiv.getElementsByTagName('li');
+				//chushihua
+				oImg.src = arrImg[i][0];
+				//chushihua jieshu
+
+				for(var j=0,len=aLi.length; j<len; j++){
+					aLi[j].smallindex = j;
+					
+					aLi[j].onclick = function(){
+						for(var j=0,len=aLi.length; j<len; j++){
+							aLi[j].className = '';
+							oImg.src = arrImg[num][this.smallindex];
+						}
+						
+						this.className = 'on';
+
+					}
+				}
+
+			}
+		}
+
+		
+
+	}
+  </script>
+ </head>
+ <body>
+	<div class="btn" id="btns">
+		<input type="button" class="on" value="最热团购" />
+		<input type="button"value="商城特惠" />
+		<input type="button"value="名牌推荐" />
+		<input type="button"value="缤纷活动" />
+	</div>
+	<div id="list">
+		<div class="show">
+			<img src="" alt="" />
+			<ul>
+				<li class="on">最热团购1</li>
+				<li>最热团购2</li>
+				<li>最热团购3</li>
+			</ul>
+		</div>
+		<div>
+			<img src="" alt="" />
+			<ul>
+				<li class="on">商城特惠</li>
+				<li>商城特惠</li>				
+			</ul>
+		</div>
+		<div>
+			<img src="" alt="" />
+			<ul>
+				<li class="on">名牌推荐</li>
+				<li>名牌推荐</li>
+				<li>名牌推荐</li>
+				<li>名牌推荐</li>
+			</ul>
+		</div>
+		<div>
+			<img src="" alt="" />
+			<ul>
+				<li class="on">缤纷活动</li>
+				<li>缤纷活动</li>
+				<li>缤纷活动</li>
+				<li>缤纷活动</li>
+				<li>缤纷活动</li>
+			</ul>
+		</div>
+	</dl>
+ </body>
+</html>

@@ -1,14 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>yantk练习列表</title>
-    <style>
-        body { width:400px; margin:0 auto; }
-        h1 { text-align:center; padding-bottom:20px; border-bottom:1px solid black; }
-    </style>
-</head>
-<body>
-    <h1>我是练习2</h1>
-</body>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{ margin:0; padding:0; }
+	li { list-style:none; }
+	.tabbox { margin:20px 0 0 10px;  width:400px; height:400px; background:#DEE7E7;}
+	.mouseTxt { display:none; }
+	.mouseTxt img { width:80px; height:60px; }
+	.button { height:50px; float:right;  }
+	.button input {  margin-left:10px; padding:10px; }
+	.button input.on { background:red; }
+	.tabbox ul { width:360px; display:none; }
+	.tabbox ul li p { width:340px; height:30px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; line-height:30px; border-bottom:1px dashed white; cursor:pointer; }
+  </style>
+ </head>
+ <script type="text/javascript">
+	window.onload = function(){
+	
+	/*
+		var aBtn = document.getElementsByTagName('input');
+		var aUl = document.getElementsByTagName('ul');
+
+		for(var i=0,len = aBtn.length; i<len; i++){
+
+			aBtn[i].index = i;
+
+			aBtn[i].onclick = changeTab;
+			
+		}
+
+		function changeTab(){
+			
+			for(var i=0,len=aBtn.length; i<len; i++){
+				
+				aBtn[i].className = '';
+				aUl[i].style.display = 'none';
+			}
+
+			this.className = 'on';
+			aUl[this.index].style.display = 'block';
+		}
+
+		写的不对。。。以前要求是不要有全局变量
+		*/
+
+		var oTab = new TabSwitch('button');
+		
+	}
+	
+	function TabSwitch(id){
+		var oDiv = document.getElementById(id);
+		this.aBtn = oDiv.getElementsByTagName('input');
+		this.aUl = document.getElementsByTagName('ul');
+
+		var _this = this;
+
+		for(var i=0,len = this.aBtn.length; i<len; i++){
+
+			this.aBtn[i].index = i;
+
+			this.aBtn[i].onclick = function(){
+
+				_this.tab(this);
+			}
+			
+		}
+	}	
+
+	TabSwitch.prototype.tab = function (oBtn){
+		
+		for(var i=0,len=this.aBtn.length; i<len; i++){
+			
+			this.aBtn[i].className = '';
+			this.aUl[i].style.display = 'none';
+		}
+
+		oBtn.className = 'on';
+		this.aUl[oBtn.index].style.display = 'block';
+	}
+ </script>
+ <body>
+	<div class="tabbox">
+		<div class="button" id="button">					
+			<input type="button" value="每日" class="on" />	
+			<input type="button" value="每周" />
+			<input type="button" value="全部" />
+		</div>
+		<div class="itembox" id="itembox">
+			<ul style="display:block;">
+				<li>
+					<p>1.解密光宇地球与人类的以前林疑问题奥林疑问题</p>		
+				</li>				
+			</ul>
+			<ul>
+				<li>
+					<p>2.解密光宇地球与人类的以前林疑问题奥林疑问题</p>		
+				</li>				
+			</ul>
+			<ul>
+				<li>
+					<p>3.解密光宇地球与人类的以前林疑问题奥林疑问题</p>		
+				</li>				
+			</ul>
+		</div>
+	</div>
+ </body>
 </html>

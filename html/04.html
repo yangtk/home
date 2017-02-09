@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	#pic { width:400px; height:500px; background:url(img03/loader_ico.gif) no-repeat center center #f1f1f1; position:relative; padding:30px 0; }
+	#pic img { width:400px; height:500px; }
+	#pic span,#pic p { width:100%; text-align:center; line-height:30px; background:#333; position:absolute; color:white; }
+	#pic span { top:0; }
+	#pic p { bottom:0; }
+	#list { position:absolute; right:-50px; top:0; margin:0; }
+	#list li {width:40px; height:40px; margin-bottom:10px; background:#666; list-style:none; cursor:pointer; }
+	#list li.on { background:#fc6; }
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oPic = document.getElementById('pic'),
+			oUl = document.getElementById('list'),
+			oTop = oPic.getElementsByTagName('span')[0],
+			oDown = oPic.getElementsByTagName('p')[0],
+			oImg = oPic.getElementsByTagName('img')[0],
+			oUl = document.getElementById('list'),
+			aLi = oUl.getElementsByTagName('li'),
+			arrImg = ['img03/1.png','img03/2.png','img03/3.png','img03/4.png'],
+			arrText = ['图片一','图片二','图片三','图片四'],
+			num = 0;			
+
+		for(var i=0,len=arrImg.length; i<len; i++){
+			oUl.innerHTML += '<li></li>';
+		}
+////////////////////////////
+var timer = null;
+function autoPlay(){
+	timer = setInterval(function(){
+		num++;
+		num%=arrText.length;
+		fnTab();
+	},1000);
+}
+setTimeout(autoPlay,2000)
+oPic.onmouseover = function(){
+	clearInterval(timer);
+}
+oPic.onmouseout = autoPlay;
+////////////////////////////
+
+		//初始化
+		function fnTab(){
+			oImg.src = arrImg[num];
+			oTop.innerHTML = 1 + num + '/' + arrImg.length;
+			oDown.innerHTML = arrText[num];
+			for(var i=0,len=arrImg.length; i<len; i++){
+				aLi[i].className = '';
+				aLi[num].className = 'on';
+			}
+		}
+		fnTab();
+
+		for(var i=0,len=arrImg.length; i<len; i++){
+			aLi[i].index = i;			
+			aLi[i].onclick = function(){
+				num = this.index;
+				fnTab();
+			}
+		}
+
+
+	}
+  </script>
+ </head>
+ <body>
+	<div id="pic">
+		<img src="" alt="" />		
+		<span>图片数量计算中...</span>
+		<p>图片描述加载中...</p>
+		<ul id="list"></ul>
+	</div>
+ </body>
+</html>

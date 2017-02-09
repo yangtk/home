@@ -1,0 +1,259 @@
+<link rel="stylesheet" href="css/base.css">
+<style>
+.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.btn.focus,.btn:focus,.btn:hover{color:#333;text-decoration:none}.btn.active,.btn:active{background-image:none;outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn.disabled,.btn[disabled],fieldset[disabled] .btn{cursor:not-allowed;filter:alpha(opacity=65);-webkit-box-shadow:none;box-shadow:none;opacity:.65}a.btn.disabled,fieldset[disabled] a.btn{pointer-events:none}.btn-default{color:#333;background-color:#fff;border-color:#ccc}.btn-default.focus,.btn-default:focus{color:#333;background-color:#e6e6e6;border-color:#8c8c8c}.btn-default:hover{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active.focus,.btn-default.active:focus,.btn-default.active:hover,.btn-default:active.focus,.btn-default:active:focus,.btn-default:active:hover,.open>.dropdown-toggle.btn-default.focus,.open>.dropdown-toggle.btn-default:focus,.open>.dropdown-toggle.btn-default:hover{color:#333;background-color:#d4d4d4;border-color:#8c8c8c}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{background-image:none} 
+
+
+
+    /* 弹出提示层 */
+
+.tip-layer {
+    z-index: 99999999;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    display:none;
+    transform:translate(-50%,0);
+    -webkit-transform:translate(-50%,0);
+} 
+.tip-layer1 .tip-status {
+    box-shadow: 0 3px 15px #d1d5d9;
+    -webkit-box-shadow: 0 3px 15px #d1d5d9;
+}
+.tip-layer2 .tip-status{
+    box-shadow: 0 3px 15px rgba(51,51,51,.5);
+    -webkit-box-shadow: 0 3px 15px rgba(51,51,51,.5);
+}
+.tip-pop {
+    padding: 12px 8px 12px 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.tip-pop2 {
+    min-width:260px;
+    padding:20px 40px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.tip-status {
+
+    background-color: white;
+    border-color: #ddd;
+    
+}
+.icon-status-tip {
+    display:inline-block;
+    width:18px;
+    height:18px;    
+}
+.icon-status-tip2 {
+    display:inline-block;
+    width:46px;
+    height:46px;    
+}
+.no-icon {
+    display:none;
+}
+.icon-status-tip.tip-tip {
+    background:url(images/icon-status-tip.png) no-repeat;
+    background-size:100%;
+}
+.icon-status-tip2.tip-error {
+    background:url(images/icon-status-error.png) no-repeat;
+    background-size:100%;
+}
+.icon-status-tip2.tip-success {
+    background:url(images/icon-status-success.png) no-repeat;
+    background-size:100%;
+}
+.tip-txt {
+    color:black;
+}
+.tip-txt2 {
+    color:#333;
+    font-size:20px;
+}
+.tip-txt3 {
+    color:#999;
+    font-size:13px;
+}
+.tip-close {
+    display:inline-block;
+    width:28px;
+    height:28px;
+    background:url(images/close-icon1.png) no-repeat;
+    background-size:14px;
+    background-position:center;
+    cursor:pointer;
+    opacity: .7
+}
+.tip-close-position {
+    position:absolute;
+    top:7px;
+    right:7px;
+    display:none;
+}
+.tip-close:hover {
+    opacity: 1;
+}
+.btns-item button {
+    padding:4px 22px;
+    margin:0 10px;
+    display:none;
+}
+.btns-item button:first-child {
+    color: #22ac38;
+}
+.tip-btn {
+    display:none;
+}
+.tipLayer-backdrop {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:9999;
+    background:#000;
+    display:none;
+
+    opacity:.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+/*动画*/
+.tip-layer {    
+    animation:tip-layer .5s;
+    -webkit-animation:tip-layer .5s;
+    -moz-animation:tip-layer .5s;}
+
+@keyframes tip-layer {
+    0%    { top:-20px; opacity:.5; }    
+    100%  { top:100px; opacity:1; } 
+}
+@-webkit-keyframes tip-layer {
+    0%    { top:-20px; opacity:.5; }    
+    100%  { top:100px; opacity:1; }     
+}
+@-moz-keyframes tip-layer {
+    0%    { top:-20px; opacity:.5; }    
+    100%  { top:100px; opacity:1; } 
+}
+</style>
+<div class="card communicationRight {{menuOff}} minHeight ">
+	
+
+
+    <h2 style="margin:20px; font-weight:bold;">参数依次是：提示文字、  图标、  数字1或2表示几个按钮、  其他提示文字、  点击确定按钮执行函数、  点击取消按钮执行函数</h2>
+
+    
+
+    <div style="margin:20px;color:#999;">
+        <p class="mb10">
+            <span>tipLayer.sm('测试提示框');</span>
+            <button class="button">提示</button>
+            <p class="mb10"><img width="152" src="images/wait_del/11.png" alt=""></p>
+        </p>
+        <p class="mb10">
+            <span>tipLayer.lg('保存失败!','tip-error');</span>
+            <button class="button">错误</button>
+            <p class="mb10"><img width="256" src="images/wait_del/22.png" alt=""></p>
+        </p>
+        <p class="mb20">
+            <span>tipLayer.lg('保存成功!','tip-success');</span>
+            <button class="button">成功</button>
+            <p class="mb10"><img width="256" src="images/wait_del/33.png" alt=""></p>
+        </p>
+        <p class="mb10">
+            <span>tipLayer.lg('保存失败!','tip-error',1,'可能的其他提示，确定吗？',function(){alert('执行本函数')} );</span>
+            <button class="button">错误，有‘确认’按钮</button>
+            <p class="mb10"><img width="261" src="images/wait_del/44.png" alt=""></p>
+        </p>
+        <p class="mb30">
+            <span>tipLayer.lg('修改成功!','tip-success',2,'可能的其他提示，确定吗？',function(){alert(111)},'close');</span>
+            <button class="button">成功，有‘确认’、‘取消’按钮</button>
+            <p class="mb10"><img width="275" src="images/wait_del/55.png" alt=""></p>
+        </p>
+        <p class="mb10">
+            <span>tipLayer.lg('修改成功!','no-icon',2,'',function(){alert(111)},function(){alert(222)});</span>
+            <button class="button">无图标 + 两个按钮</button>
+            <p class="mb10"><img width="274" src="images/wait_del/66.png" alt=""></p>
+        </p>
+        <p class="mb10">
+            <span>tipLayer.lg('修改成功!','no-icon',2,'',function(){alert(111)},function(){alert(222)},'按钮文字1','按钮文字2');</span>
+            <button class="button">按钮文字</button>
+            <p class="mb10"><img width="348" src="images/wait_del/77.png" alt=""></p>
+        </p>
+    </div>
+
+    <script src="js/tip-layer.js"></script>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script>
+			$('.button').eq(0).click(function(){
+					tipLayer.sm('测试提示框','tip-tip');
+			})
+			$('.button').eq(1).click(function(){
+					tipLayer.lg('保存失败!','tip-error');
+			})
+			$('.button').eq(2).click(function(){
+					tipLayer.lg('保存成功!','tip-success');
+			})
+			$('.button').eq(3).click(function(){
+					tipLayer.lg('保存失败!','tip-error',1,'可能的其他提示，确定吗？',function(){alert('执行本函数')} );
+			})
+			$('.button').eq(4).click(function(){
+					tipLayer.lg('修改成功!','tip-success',2,'可能的其他提示，确定吗？',function(){alert(111)},'close');
+			})
+            $('.button').eq(5).click(function(){
+                    tipLayer.lg('修改成功!','no-icon',2,'',function(){alert(111)},function(){alert(222)});
+            })
+            $('.button').eq(6).click(function(){
+                    tipLayer.lg('修改成功!','no-icon',2,'',function(){alert(111)},function(){alert(222)},'按钮文字1','按钮文字2');
+            })
+		
+
+
+
+    // function yourFN(){
+    //      // window.open('http://www.baidu.com') ;
+    //     alert('yourFN')
+    // }
+    // function quxiao(){
+    //      // window.open('http://www.baidu.com') ;
+    //     alert('你点击了取消，执行函数')
+    // }
+
+    </script>
+
+
+
+
+</div>
+
+<!--新的 全局提示框-->
+    <div class="tip-layer tip-layer1">
+        <div class="tip-pop tip-status">
+            <i class="icon-status-tip ver-m mr5"></i>
+            <span class="tip-txt ver-m"></span>
+            <i class="tip-close ver-m"></i>
+        </div>
+    </div>
+
+    <div class="tip-layer tip-layer2 pt">
+        <div class="tip-pop2 tip-status txt-c">
+            <i class="tip-close tip-close-position"></i>
+            <i class="icon-status-tip2 ver-m mr5"></i>
+            <p class="txt-c tip-txt2 mt10"></p>
+            <div class="tip-btn">
+                <p class="tip-txt3 mt5"></p>
+                <div class="btns-item mt10 txt-c">
+                    <button class="btn btn-default tip-btn1">确定</button>
+                    <button class="btn btn-default tip-btn2">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tipLayer-backdrop"></div>
+    <!-- end 新的 全局提示框-->

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	ul { margin:0; padding:0; }
+	li { list-style-type:none; width:500px; height:50px;  background:#f1f1f1; margin-bottom:3px; cursor:pointer; }
+  </style>
+  <script type="text/javascript">
+  window.onload = function(){ 
+	var aLi = document.getElementById('box').getElementsByTagName('li');
+
+	for(var i=0,len=aLi.length; i<len; i++){
+		if(i%2 ==1){
+			aLi[i].style.background = 'yellow';
+		}else{
+			aLi[i].style.background = 'black';
+		}
+	}
+
+	for(var b=0,len=aLi.length; b<len; b++){
+		aLi[b].onmouseover = function(){
+			if(this.style.background=='black'||this.style.background=='yellow'){
+				this.style.background = 'red';
+			}
+			
+		};
+
+		aLi[b].index = b;
+		aLi[b].onmouseout = function(){	
+			if(this.style.background=='red'){
+				if(this.index%2 ==1){
+					this.style.background = 'yellow';
+				}else{
+					this.style.background = 'black';
+				}
+			}
+		}
+		
+		aLi[b].onclick = function(){
+			
+			if(this.style.background=='black' || this.style.background=='yellow'||this.style.background=='red'){
+				this.style.background = 'blue';
+				this.onmouseout = function(){
+					this.style.background = 'blue';
+				}
+				
+			}else{
+				if(this.index%2 ==1){
+					this.style.background = 'yellow';
+					this.onmouseout = function(){
+						this.style.background = 'yellow';
+					}
+				}else{
+					this.style.background = 'black';
+					this.onmouseout = function(){
+						this.style.background = 'black';
+					}
+				}
+				
+			}
+		}
+	}
+	
+	
+
+
+
+
+
+
+  }
+
+	
+  </script>
+ </head>
+ <body>
+	<ul id="box">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>		
+	</ul>
+ </body>
+</html>

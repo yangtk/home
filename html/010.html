@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{margin:0; padding:0;}
+	#time { width:488px; font-size:0; margin:100px auto 0; }
+	img { width:61px; height:86px; border:0; }
+	li{ width:61px; height:86px; overflow:hidden; display:inline-block; position:relative; }
+	#time div { position:absolute; top:0; left:0; }
+  </style>
+  <script type="text/javascript" src="js/base.js"></script>
+  <script type="text/javascript" src="js/doMove.js"></script>	
+  <script type="text/javascript">
+  window.onload = function(){
+	var aLi = document.getElementsByTagName('li');
+
+	function toTwo(n){
+		return n = n<10?'0'+n:''+n;
+	}	
+
+	function fnTime(){
+		var myTime = new Date(),
+			iHours = myTime.getHours(),
+			iMin = myTime.getMinutes(),
+			iSec = myTime.getSeconds(),
+			str = toTwo(iHours) +':'+ toTwo(iMin) +':'+ toTwo(iSec);
+			document.getElementsByTagName('p')[0].innerHTML = str;	
+			
+		function fnFlip(li,i){			
+			var aImg = li.getElementsByTagName('img'),
+				oDiv = li.getElementsByTagName('div')[0];
+			if(str.charAt(i) ==':'){
+				aImg[0].src = 'img010/colon.jpg';				
+				setTimeout(function(){
+					aImg[0].src = 'img010/colon2.jpg';
+				},500)		
+			}else{				
+				aImg[1].src = 'img010/' +str.charAt(i)+ '.jpg';
+				if(aImg[0].src != aImg[1].src){
+					doMove(oDiv,'top',13,-86,function(){
+						aImg[0].src = aImg[1].src;
+						oDiv.style.top = 0 +'px';
+					})
+				}
+			}			
+		}
+
+		for(var i=0,len=str.length; i<len; i++){			
+			 fnFlip(aLi[i],i)
+		}
+	}
+
+	fnTime();
+	setInterval(fnTime,1000);
+
+
+
+
+
+
+
+
+
+
+  }
+  </script>
+ </head>
+ <body>
+<p></p>
+	<div id="time">
+		<ul>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/colon.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/colon.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img010/0.jpg" alt="" />
+					<img src="img010/0.jpg" alt="" />
+				</div>
+			</li>
+
+		</ul>
+	</div>
+ </body>
+</html>

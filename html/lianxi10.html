@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	 html,body { position:relative; width:100%; height:100%; }
+	h2 span{ font-size:14px; color:white; background:red;padding:5px 10px; cursor:pointer; }
+	#box { width:100px; height:100px; border:3px solid black; }
+	.wrap { position:absolute; z-index:3; width:100%; height:100%;  top:0;left:0; display:none; }
+	.wrap .bg { position:absolute; z-index:3; width:100%; height:100%; background:black; opacity:0.3; }
+	.wrap .pop { padding:20px; width:300px; background:white; border:10px solid #bbb; position:absolute; z-index:4; opacity:1; top:50%; left:50%; margin-left:-170px; }
+	.wrap .pop li { list-style-type:none; margin-bottom:15px;  }
+	.wrap .pop li #hong { background:red; padding:5px; color:white; }
+	.wrap .pop li #huang { background:yellow; padding:5px; color:white; }
+	.wrap .pop li #lan { background:blue; padding:5px; color:white; }
+	.wrap .pop li a { text-decoration:none; padding:5px 10px; border:1px solid #999; }
+	
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		//function $(i){
+		//	return document.getElementById(i);
+		//}
+		
+		var box = document.getElementById('box');
+		var hong = document.getElementById('hong');
+		var huang = document.getElementById('huang');
+		var lan = document.getElementById('lan');
+		var w2 = document.getElementById('w2');
+		var w3 = document.getElementById('w3');
+		var w4 = document.getElementById('w4');
+		var h2 = document.getElementById('h2');
+		var h3 = document.getElementById('h3');
+		var h4 = document.getElementById('h4');
+		var open = document.getElementById('open');
+		var wrap = document.getElementById('wrap');
+		var back = document.getElementById('back');
+		var ok = document.getElementById('ok');
+
+		open.onclick = function(){
+			wrap.style.display = 'block';
+		}
+		ok.onclick = function(){
+			wrap.style.display = 'none';
+		}
+		hong.onclick = function(){
+			box.style.background = 'red';
+		}
+		huang.onclick = function(){
+			box.style.background = 'yellow';
+		}
+		lan.onclick = function(){
+			box.style.background = 'blue';
+		}
+		w2.onclick = function(){
+			box.style.width = '200px';
+		}
+		w3.onclick = function(){
+			box.style.width = '300px';
+		}
+		w4.onclick = function(){
+			box.style.width = '400px';
+		}
+		h2.onclick = function(){
+			box.style.height = '200px';
+		}
+		h3.onclick = function(){
+			box.style.height = '300px';
+		}
+		h4.onclick = function(){
+			box.style.height = '400px';
+		}
+		back.onclick = function(){
+			box.style.height = '100px';
+			box.style.width = '100px';
+			box.style.background = '';
+		}
+		
+	}
+  </script>
+ </head>
+ <body>
+	<h2>请为下面的div设置样式：<span id="open">点击设置</span></h2>
+	<div id="box"></div>
+	<div class="wrap" id="wrap">
+		<div class="bg"></div>
+		<div class="pop">
+			<ul>
+				<li>
+					请选择背景颜色：
+					<a href="#" id="hong">红</a>
+					<a href="#" id="huang">黄</a>
+					<a href="#" id="lan">蓝</a>
+				</li>
+				<li>
+					请选择宽度：
+					<a href="#" id="w2">200</a>
+					<a href="#" id="w3">300</a>
+					<a href="#" id="w4">400</a>
+				</li>
+				<li>
+					请选择高度：
+					<a href="#" id="h2">200</a>
+					<a href="#" id="h3">300</a>
+					<a href="#" id="h4">400</a>
+				</li>
+			</ul>
+			<div style="text-align:center;">
+			<input type="button" value="恢复" id="back"/>
+			<input type="button" value="确定" id="ok" /></div>
+		</div>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title> 
+  <style type="text/css">
+  *{ list-style:none; padding:0; margin:0; }
+  .clearfix:after{ content:'.'; display:block;height:0; visibility:hidden; clear:both; }
+  .fl { float:left; display:inline; }
+	.allwrap { width:450px; height:70px; position:relative; margin:100px auto; }
+	.wrap { width:450px; height:70px; position:relative; margin:100px auto;
+	overflow:hidden; 
+	}
+	 .wrap ul {  height:70px; position:relative;
+	left:0;
+	 }
+
+	.toleft { width:50px; height:50px; border-radius:100px; position:absolute; top:10px; left:-30px; background:rgba(233,233,233,.8); }
+	.toright { width:50px; height:50px; border-radius:100px; position:absolute; top:10px; right:-30px; background:rgba(233,233,233,.8); }
+	a { text-decoration:none; font-size:12px; line-height:50px; text-align:center; }
+
+  
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oUl = document.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+		var aA = document.getElementsByTagName('a');
+		var iSpeed = -5;
+		var timer = null;
+
+
+
+		
+		oUl.innerHTML += oUl.innerHTML;
+
+		oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+
+
+		function torun(){
+
+			timer = setInterval(function(){
+			
+						oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+
+						if(oUl.offsetLeft < -oUl.offsetWidth/2 ){
+							
+							oUl.style.left = 0 + 'px';
+						}else if( oUl.offsetLeft == 0 ){
+
+							oUl.style.left = -oUl.offsetWidth/2 + 'px';
+						}
+						
+
+					},30);
+		};
+
+		torun();
+		
+
+		aA[0].onmouseover = function(){
+			iSpeed = 5;
+		}
+
+		aA[1].onmouseover = function(){
+			iSpeed = -5;
+		}
+
+		oUl.onmouseover = function(){
+			clearInterval( timer );
+		}
+
+		oUl.onmouseout = function(){
+			torun();
+		}
+
+
+
+		
+	}
+  </script>
+	
+ </head>
+ <body>
+	 <div class="allwrap">
+		<div class="wrap">
+			<ul class="clearfixf">
+				<li class="fl"><img src="img03/1.png" width="150" height="80" alt="" /></li>
+				<li class="fl"><img src="img03/2.png" width="150" height="80" alt="" /></li>
+				<li class="fl"><img src="img03/3.png" width="150" height="80" alt="" /></li>
+				<li class="fl"><img src="img03/4.png" width="150" height="80" alt="" /></li>
+				
+			</ul>
+			
+		</div>
+		<a href="#" class="toleft">left</a>
+		<a href="#" class="toright">right</a>
+	</div>
+ </body>
+</html>
